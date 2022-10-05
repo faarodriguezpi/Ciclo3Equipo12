@@ -1,0 +1,36 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.EditarHistoriasModel
+@{
+}
+
+<h1> Agregar -  Editar Historia </h1>
+
+<form method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for = "historia.Id" \>
+        <label asp-for="historia.FechaInicial"></label>
+        <input asp-for="historia.FechaInicial" class="form-control">
+
+        <!-- faltaría asignar VisitasPyP -->
+        
+        
+        @if (Model.historia.VisitasPyP != null)
+        {
+            <label for="visitaPyP"> VisitasPyP </label>
+            <select class="form-control" id="visitaPyP" asp-for="indexListVisitaPyP" name="visitaPyPId"> <!-- Lo que se escoja queda almacenado en asp for, en mascota.Dueno.Id -->
+                <option value="0"> Seleccione una Visita PyP </option> <!-- value 0 por defecto, que dice Sleeccione un dueño -->
+                @foreach (var visitaPyP in Model.historia.VisitasPyP)
+                {
+                    <option value="@visitaPyP.Id"> @visitaPyP.FechaVisita @visitaPyP.Temperatura </option>
+                }
+            </select>
+        }
+
+
+        
+
+        <button type="submit" class="btn btn-primary"> Grabar </button>
+    </div>
+</form>
+
+<a asp-page="./ListaHistorias" class="btn btn-secondary"> Lista de Historias </a>

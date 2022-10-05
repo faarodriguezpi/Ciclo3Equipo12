@@ -1,0 +1,35 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListaDuenosModel
+@{
+}
+
+<h1> Listado Propietarios </h1>
+
+<table class="table">
+    <tr>
+        <th> Nombres </th>
+        <th> Apellidos </th>
+    </tr>
+    @foreach (var dueno in Model.listaDuenos)
+    {
+        <tr>
+            <!-- <td> @dueno.Id </td> -->
+            <td> @dueno.Nombres </td>
+            <td> @dueno.Apellidos </td>
+            <td> <!-- Boton en asp-route-duenoId la ultima palabra es como se va en la cadena de conexion-->
+                <a class="btn btn-primary table-btn" asp-page="./DetallesDuenos" asp-route-duenoId="@dueno.Id"> <!-- el id va en la cadena de conexión -->
+                    Detalle Dueño
+                </a>
+            </td>
+            <td> <!-- Boton -->
+                <a class="btn btn-primary table-btn" asp-page="./EditarDuenos" asp-route-duenoId="@dueno.Id"> <!-- el id va en la cadena de conexión -->
+                    Editar Dueño
+                </a>
+            </td>
+            
+        </tr>
+    }
+    
+</table>
+
+<a class="btn btn-primary table-btn" asp-page="./EditarDuenos" class="btn-default"> Adicionar Dueño</a>

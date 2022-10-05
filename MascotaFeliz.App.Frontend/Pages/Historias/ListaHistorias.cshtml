@@ -1,0 +1,33 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListaHistoriasModel
+@{
+}
+
+<h1> Listado Historias </h1>
+
+<table class="table">
+    <tr>
+        <th> Fecha Inicial </th>
+        <!-- <th> Dueño </th> -->
+    </tr>
+    @foreach (var historia in Model.listaHistorias)
+    {
+        <tr>
+            <td> @historia.FechaInicial </td>
+            <td> <!-- Boton en asp-route-duenoId la ultima palabra es como se va en la cadena de conexion-->
+                <a class="btn btn-primary table-btn" asp-page="./DetallesHistorias" asp-route-historiaId="@historia.Id"> <!-- el id va en la cadena de conexión -->
+                    Detalle Historia
+                </a>
+            </td>
+            <td> <!-- Boton -->
+                <a class="btn btn-primary table-btn" asp-page="./EditarHistorias" asp-route-historiaId="@historia.Id"> <!-- el id va en la cadena de conexión -->
+                    Editar Historia
+                </a>
+            </td>
+            
+        </tr>
+    }
+    
+</table>
+
+<a class="btn btn-primary table-btn" asp-page="./EditarHistorias" class="btn-default"> Adicionar Historia</a>

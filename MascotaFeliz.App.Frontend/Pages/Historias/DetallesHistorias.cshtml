@@ -1,0 +1,26 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.DetallesHistoriasModel
+@{
+}
+
+<h1> Detalles Historia </h1>
+
+<div class="container">
+    <div class="row" >
+        <div class="col-sm" class="shadow-sm p-4 mb-4 bg-white">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h5 class="mb-1">Id</h5> @Model.historia.Id </li>
+                <li class="list-group-item"><h5 class="mb-1">Fecha Inicial: </h5>@Model.historia.FechaInicial</li>
+                <li class="list-group-item"><h5 class="mb-1">VisitaPyP:</h5>@Model.idVisita</li>
+                @foreach (var visitaPyP in Model.historia.VisitasPyP)
+                {   
+                    <li class="list-group-item ml-4"><h5 class="mb-1">Visita </h5>@visitaPyP.Id</li>
+                    <li class="list-group-item ml-5"><h5 class="mb-1">Fecha Visita: </h5>@visitaPyP.FechaVisita</li>
+                    <li class="list-group-item ml-5"><h5 class="mb-1">Temperatura: </h5>@visitaPyP.Temperatura</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<a asp-page="./ListaHistorias" class="btn btn-secondary"> Lista de Historias </a>
